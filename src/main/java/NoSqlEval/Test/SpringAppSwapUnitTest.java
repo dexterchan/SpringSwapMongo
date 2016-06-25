@@ -122,7 +122,7 @@ public class SpringAppSwapUnitTest implements CommandLineRunner{
 		if(Action.equals("INSERT")){
 			insertTrade(numTrade);
 		}else if(Action.equals("UPDATE")){
-			findUpdateTrade("DONE","VER");
+			findUpdateTrade("NEW","DONE");
 		}else if(Action.equals("REGEX")){
 			List<SwapTrade1> lst=this.findTradeRegex("swapType", ".*MTM");
 			for (SwapTrade1 swp : lst){

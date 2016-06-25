@@ -24,12 +24,19 @@ public class UnitTestCase  {
 		
 		return bookList[num];
 	}
-	private String getRandomTradeStatus(){
+//	private String getRandomTradeStatus(){
+//		TradeStatusEnum status=TradeStatusEnum.NEW;
+//		int num = random.nextInt(4);
+//		//status = TradeStatusEnum.values()[num];
+//		
+//		return TradeStatus[num];
+//	}
+	private TradeStatusEnum getRandomTradeStatus(){
 		TradeStatusEnum status=TradeStatusEnum.NEW;
 		int num = random.nextInt(4);
-		//status = TradeStatusEnum.values()[num];
+		status = TradeStatusEnum.values()[num];
 		
-		return TradeStatus[num];
+		return status;
 	}
 	private String getRandomCust(){
 		int num = random.nextInt(CustList.length);
@@ -237,8 +244,18 @@ public class UnitTestCase  {
 		
 	}
 	public void changeTradeStatus(List<SwapTrade1> lst, String toState){
+		TradeStatusEnum e=TradeStatusEnum.NEW;
+		if(toState.equals("NEW")){
+			e=TradeStatusEnum.NEW;
+		}else if(toState.equals("DONE")){
+			e=TradeStatusEnum.DONE;
+		}else if(toState.equals("VER")){
+			e=TradeStatusEnum.VER;
+		}else if(toState.equals("MAT")){
+			e=TradeStatusEnum.MAT;
+		}
 		for(SwapTrade1 swp : lst){
-			swp.setTradeStatus(toState);
+			swp.setTradeStatus(e);
 		}
 	}
 	

@@ -25,7 +25,7 @@ public class SwapTrade1 {
 	String location;
 	String book;
 	String customer;
-	String tradeStatus;
+	TradeStatusEnum tradeStatus;
 	
 	String swapType;
 	Date startDate;
@@ -68,13 +68,15 @@ public class SwapTrade1 {
 
 	
 
-	public String getTradeStatus() {
+	public TradeStatusEnum getTradeStatus() {
 		return tradeStatus;
 	}
 
-	public void setTradeStatus(String tradeStatus) {
+
+	public void setTradeStatus(TradeStatusEnum tradeStatus) {
 		this.tradeStatus = tradeStatus;
 	}
+
 
 	public String getSwapType() {
 		return swapType;

@@ -13,14 +13,8 @@ public class SwapTrade1 {
 	@Id
 	private String id;
 
-	public String getId() {
-		return id;
-	}
-
+	private String tradeId;
 	
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	String location;
 	String book;
@@ -37,6 +31,22 @@ public class SwapTrade1 {
 		assets = new LinkedList<AssetLeg>();
 	}
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getTradeId() {
+		return tradeId;
+	}
+
+	public void setTradeId(String tradeId) {
+		this.tradeId = tradeId;
+	}
+
 	public void insertAsset(AssetLeg f){
 		assets.add(f);
 	}

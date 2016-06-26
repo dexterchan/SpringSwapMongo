@@ -38,4 +38,26 @@
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
 
+	
+	<bean id="TradeIdCounterTemplate" class="NoSqlEval.Utility.TradeIdCounter">
+      <property name="length" value="12"/>
+      <property name="increment" value="1"/>
+      <property name="initialValue" value="100"/>
+      <property name="defaultSuffix" value="T"/>
+      <property name="defaultPrefix" value="D"/>
+      <property name="suffixMap">
+      	<map >
+			<entry key="LONDON" value="L"/>
+			<entry key="HONGKONG" value="H"/>
+			<entry key="PARIS" value="P"/>
+			<entry key="USRATES" value="N"/>
+			
+		</map>
+      </property>
+   </bean>
+ 	<util:map id="PrefixMap" map-class="java.util.HashMap">
+		<entry key="SWAP" value="S"/>
+		<entry key="BOND" value="B"/>
+	</util:map>
+	
 </beans>

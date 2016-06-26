@@ -11,18 +11,25 @@ import NoSqlEval.SwapTrade.AssetFlow;
 import NoSqlEval.SwapTrade.AssetLeg;
 import NoSqlEval.SwapTrade.SwapTrade1;
 import NoSqlEval.SwapTrade.SwapTrade1.TradeStatusEnum;
+import NoSqlEval.Utility.TradeIdCounter;
 
 public class UnitTestCase  {
+	String[] locList={"LONDON","HONGKONG","PARIS","USRATES"};
 	String[] CustList={"HSBCHKH","GS","MS","JP"};
 	String[] bookList= {"BOOK1","BOOK2","BOOK3"};
-	String[] TradeStatus= {"NEW","DONE","VER","MAT"};
+	//String[] TradeStatus= {"NEW","DONE","VER","MAT"};
 	
-	Random random  = new Random(System.currentTimeMillis());
+	Random random  = new Random(System.currentTimeMillis() * Thread.currentThread().getId());
 	
 	private String getRandomBook(){
 		int num = random.nextInt(bookList.length);
 		
 		return bookList[num];
+	}
+	private String getRandomLocation(){
+		int num = random.nextInt(locList.length);
+		
+		return locList[num];
 	}
 //	private String getRandomTradeStatus(){
 //		TradeStatusEnum status=TradeStatusEnum.NEW;
@@ -53,10 +60,11 @@ public class UnitTestCase  {
 		double rate = 1.0;
 		int tenor = this.getRandomTenor();
 		SwapTrade1 swp = new SwapTrade1();
+		String location=this.getRandomLocation();
 		
-		
+		swp.setTradeId(TradeIdCounter.getTradeId(location,"SWAP"));
 		swp.setBook(this.getRandomBook());
-		swp.setLocation("LONDON");
+		swp.setLocation(location);
 		swp.setCustomer(this.getRandomCust());
 		Calendar c = Calendar.getInstance();
 		swp.setStartDate(c.getTime());
@@ -128,9 +136,12 @@ public class UnitTestCase  {
 	
 	public SwapTrade1 prepareRandomIRS(double ntl, String ccy,String index, double rate){
 		SwapTrade1 swp = new SwapTrade1();
+		String location=this.getRandomLocation();
+		
+		swp.setTradeId(TradeIdCounter.getTradeId(location,"SWAP"));
 		int tenor = this.getRandomTenor();
 		swp.setBook(this.getRandomBook());
-		swp.setLocation("LONDON");
+		swp.setLocation(location);
 		swp.setCustomer(this.getRandomCust());
 		Calendar c = Calendar.getInstance();
 		swp.setStartDate(c.getTime());

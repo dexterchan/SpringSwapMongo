@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
+import NoSqlEval.Factory.MongoOperationFactory;
 import NoSqlEval.SwapTrade.SwapTrade1;
 
 
@@ -29,9 +30,9 @@ public class SpringAppSwapUnitTest implements CommandLineRunner{
 	MongoOperations mongoOperation =null;
 	
 	public SpringAppSwapUnitTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("SpringConfig.xml");
-		mongoOperation = (MongoOperations)ctx.getBean("mongoTemplate");	
-		
+//		ApplicationContext ctx = new GenericXmlApplicationContext("SpringConfig.xml");
+//		mongoOperation = (MongoOperations)ctx.getBean("mongoTemplate");	
+		mongoOperation = MongoOperationFactory.getMongoOperation();
 	}
 	
 	public static void main(String[] args) {
